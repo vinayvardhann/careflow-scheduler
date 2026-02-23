@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "@/components/AppLayout";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import DashboardPage from "@/pages/DashboardPage";
 import BookAppointmentPage from "@/pages/BookAppointmentPage";
 import SchedulePage from "@/pages/SchedulePage";
@@ -15,22 +16,24 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppLayout>
-          <Routes>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/book" element={<BookAppointmentPage />} />
-            <Route path="/schedule" element={<SchedulePage />} />
-            <Route path="/doctors" element={<DoctorsPage />} />
-            <Route path="/analytics" element={<AnalyticsPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AppLayout>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppLayout>
+            <Routes>
+              <Route path="/" element={<DashboardPage />} />
+              <Route path="/book" element={<BookAppointmentPage />} />
+              <Route path="/schedule" element={<SchedulePage />} />
+              <Route path="/doctors" element={<DoctorsPage />} />
+              <Route path="/analytics" element={<AnalyticsPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AppLayout>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
