@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   CalendarPlus,
@@ -9,9 +9,12 @@ import {
   Sun,
   Moon,
   Eye,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/ThemeProvider";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { path: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -23,13 +26,20 @@ const navItems = [
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
+  const { user, logout } = useAuth();
 
   const themeOptions = [
     { value: "light" as const, icon: Sun, label: "Light" },
     { value: "dark" as const, icon: Moon, label: "Dark" },
     { value: "eye-comfort" as const, icon: Eye, label: "Eye Comfort" },
   ];
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <div className="flex min-h-screen">
@@ -87,10 +97,26 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        <div className="p-4 mx-3 mb-4 rounded-lg bg-sidebar-accent">
-          <p className="text-xs font-medium text-sidebar-accent-foreground">Priority Queue Active</p>
-          <p className="text-xs text-sidebar-foreground/50 mt-1">3 emergency cases in queue</p>
-        </div>
+        {/* User info + logout */}
+        {user && (
+          <div className="p-4 mx-3 mb-4 rounded-lg bg-sidebar-accent">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs font-medium text-sidebar-accent-foreground">{user.name}</p>
+                <p className="text-xs text-sidebar-foreground/50 capitalize">{user.role}</p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 text-sidebar-foreground/60 hover:text-sidebar-accent-foreground hover:bg-sidebar-accent"
+                onClick={handleLogout}
+                title="Sign out"
+              >
+                <LogOut className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        )}
       </aside>
 
       {/* Main content */}
