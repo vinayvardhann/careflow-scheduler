@@ -85,6 +85,45 @@
     --sidebar-border: 210 25% 12%;
     --sidebar-ring: 174 62% 50%;
   }
+
+  .eye-comfort {
+    --background: 0 0% 8%;
+    --foreground: 0 60% 85%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 60% 85%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 60% 85%;
+    --primary: 0 72% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 20% 15%;
+    --secondary-foreground: 0 50% 80%;
+    --muted: 0 10% 15%;
+    --muted-foreground: 0 30% 55%;
+    --accent: 0 40% 18%;
+    --accent-foreground: 0 72% 65%;
+    --destructive: 30 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 20% 18%;
+    --input: 0 20% 18%;
+    --ring: 0 72% 50%;
+    --radius: 0.625rem;
+    --priority-emergency: 30 80% 50%;
+    --priority-high: 25 95% 53%;
+    --priority-medium: 45 93% 47%;
+    --priority-normal: 120 40% 40%;
+    --status-confirmed: 0 72% 50%;
+    --status-pending: 45 80% 47%;
+    --status-completed: 120 40% 40%;
+    --status-cancelled: 30 80% 50%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 40% 75%;
+    --sidebar-primary: 0 72% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 25% 14%;
+    --sidebar-accent-foreground: 0 50% 80%;
+    --sidebar-border: 0 20% 14%;
+    --sidebar-ring: 0 72% 55%;
+  }
 }
 
 @layer base {
